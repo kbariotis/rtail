@@ -143,6 +143,38 @@ To scale and broadcast on multiple servers, instruct the `rtail` client to strea
 
 For the time being, the webapp doesn't have an authentication layer; it assumes that you will run it behind a VPN or reverse proxy, with a simple `Authorization` header check.
 
+# Config file
+Both rtail server and client supports configuration file.
+
+The schema is :
+```json
+{
+  "server": {
+    "udp-host": "127.0.0.1",
+    "udp-port": "9999",
+    "web-host": "127.0.0.1",
+    "web-port": "8888",
+    "web-version": ""
+  },
+  "client": {
+    "host": "127.0.0.1",
+    "port": "9999",
+    "id": "127.0.0.1",
+    "mute": "",
+    "tty": true,
+    "parse-date": true
+  }
+}
+```
+
+CLI arguments will always override the configuration file.
+
+##Example
+Create a file `.rtail` to your home directory with the above contents and make
+any changes you want.
+
+    $ rtail-server --config-file ~/.rtail
+
 # How to contribute
 
 This project follows the awesome [Vincent Driessen](http://nvie.com/about/) [branching model](http://nvie.com/posts/a-successful-git-branching-model/).
